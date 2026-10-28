@@ -2,6 +2,7 @@ import java.util.Arrays;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Opgave2 {
     public static void run() {
@@ -23,6 +24,7 @@ public class Opgave2 {
                 break;
             case 2:
                 quickSort();
+                binarySearch("Piratfisk");
                 getNewAction();
                 break;
             case 3:
@@ -48,9 +50,10 @@ public class Opgave2 {
         System.out.println(Arrays.toString(data));
     }
 
+    public static String[] animalArr;
     public static void quickSort() {
         try {
-            String[] animalArr = Files.readAllLines(Paths.get("src/arter.txt")).toArray(String[]::new);
+            animalArr = Files.readAllLines(Paths.get("src/arter.txt")).toArray(String[]::new);
             System.out.println("Given array:");
             System.out.println(Arrays.toString(animalArr));
 
@@ -102,4 +105,25 @@ public class Opgave2 {
         arr[j] = temp;
     }
 
+    public static void binarySearch(String searchTarget) {
+        int low = 0, high = animalArr.length - 1;
+        while (low <= high) {
+            int mid = low + (high - low)/2;
+
+            //  If mid == target
+            if (animalArr[mid].compareTo(searchTarget) == 0) {
+                System.out.println(searchTarget + "found at index: " + mid);
+            }
+
+            // If less than target
+            if (animalArr[mid].compareTo(searchTarget) < 0) {
+                low = mid + 1;
+            }
+
+            // If greater than target
+            else {
+                high = mid - 1;
+            }
+        }
+    }
 }
