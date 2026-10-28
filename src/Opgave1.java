@@ -1,17 +1,25 @@
 public class Opgave1 {
     public static BinaryTree tree = new BinaryTree();
-    public static int[] nodeValues = {60, 85, 70, 50, 55, 75, 40};
+    public static Node[] nodes = {
+            new Node("Move to cover", 60),
+            new Node("Shoot from cover", 85),
+            new Node("Overwatch", 70),
+            new Node("Shoot from current position", 50),
+            new Node("Suppressionfire", 55),
+            new Node("Critical shot", 75),
+            new Node("Reload weapon", 40)
+    };
 
     public static void run() {
-        for (int nodeValue : nodeValues) {
-            tree.addValue(nodeValue);
+        for (Node node : nodes) {
+            tree.addNode(node);
         }
 
         getNewAction();
     }
 
     public static void getNewAction() {
-        System.out.println("What do you want to do?");
+        System.out.println("\nWhat do you want to do?");
         System.out.println("1 : Print tree");
         System.out.println("2 : Search for highest value with In-Order");
         System.out.println("3 : Quit");
@@ -38,12 +46,11 @@ public class Opgave1 {
         inOrder(node.left, searchTarget);
 
         //  Check value
-        if (node.nodeValue == searchTarget) {
-            System.out.println("Value found");
+        if (node.value == searchTarget) {
+            System.out.println("Best action: " + node.name + ": " + node.value);
         }
 
         //  Traverse right
         inOrder(node.right, searchTarget);
-
     }
 }

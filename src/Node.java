@@ -1,45 +1,57 @@
 public class Node {
-    // Node properties
-    public int nodeValue;
+    //  Node properties
+    public int value;
+    public String name;
     public Node left;
     public Node right;
 
-    // Constructor
-    public Node(int value){
-        nodeValue = value;
-        left = null;
-        right = null;
+    //  Constructor
+    public Node(String name, int value){
+        this.value = value;
+        this.name = name;
+        this.left = null;
+        this.right = null;
+    }
+
+    //  Override constructor, when created from another node
+    public Node(Node node){
+        this.value = node.value;
+        this.name = node.name;
+        this.left = null;
+        this.right = null;
     }
 
 
     // Imported from "Kodeeksempel for at populere et binært søgetræ"
-    public void AddChildNode(int newValue)
+    public void AddChildNode(Node newNode)
     {
-        if (newValue < nodeValue)
+        if (newNode.value < value)
         {
             if (left == null)
             {
-                left = new Node(newValue);
+                left = new Node(newNode);
             }
             else
             {
                 // Recursion
-                left.AddChildNode(newValue);
+                left.AddChildNode(newNode);
             }
         }
         else
         {
             if (right == null)
             {
-                right = new Node(newValue);
+                right = new Node(newNode);
             }
             else
             {
                 // Recursion
-                right.AddChildNode(newValue);
+                right.AddChildNode(newNode);
             }
         }
     }
+
+    // Imported and adjusted from Stack Overflow (I think)
     public void printTree() {
         printTree("", true);
     }
@@ -49,7 +61,7 @@ public class Node {
             right.printTree(prefix + (isTail ? "│   " : "    "), false);
         }
 
-        System.out.println(prefix + (isTail ? "└── " : "┌── ") + nodeValue);
+        System.out.println(prefix + (isTail ? "└── " : "┌── ") + name + ": " + value);
 
         if (left != null) {
             left.printTree(prefix + (isTail ? "    " : "│   "), true);

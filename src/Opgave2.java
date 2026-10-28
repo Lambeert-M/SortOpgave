@@ -11,7 +11,7 @@ public class Opgave2 {
     }
 
     public static void getNewAction() {
-        System.out.println("What do you want to do?");
+        System.out.println("\nWhat do you want to do?");
         System.out.println("1 : Do insertion sort");
         System.out.println("2 : Do quicksort");
         System.out.println("3 : Quit");
