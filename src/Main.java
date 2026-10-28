@@ -1,14 +1,12 @@
 public class Main {
     public static void main(String[] args) {
-        opg1_3();
-    }
+        System.out.println("Which assignment would you like to run?");
+        int action = Utils.reader(1,2);
 
-    public static void opg1_3(){
-        BinaryTree tree = new BinaryTree();
-        int[] nodeValues = {60, 85, 70, 50, 55, 75, 40};
-        for (int nodeValue : nodeValues) {
-            tree.addValue(nodeValue);
+        switch (action) {
+            case 1: Opgave1.run();
+                break;
+            case 2: Opgave2.run();
         }
-        System.out.print(tree);
     }
 }

@@ -14,6 +14,7 @@ public class BinaryTree {
             root.AddChildNode(value);
         }
     }
+    /*
     // Tree-printing method generated with Claude (Anthropic), adapted for this project
     @Override
     public String toString() {
@@ -27,5 +28,5 @@ public class BinaryTree {
         print(node.right, depth + 1, sb);
         sb.append("    ".repeat(depth)).append(node.nodeValue).append("\n");
         print(node.left, depth + 1, sb);
-    }
+    }*/
 }

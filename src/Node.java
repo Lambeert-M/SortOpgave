@@ -40,5 +40,21 @@ public class Node {
             }
         }
     }
+    public void printTree() {
+        printTree("", true);
+    }
+
+    private void printTree(String prefix, boolean isTail) {
+        if (right != null) {
+            right.printTree(prefix + (isTail ? "│   " : "    "), false);
+        }
+
+        System.out.println(prefix + (isTail ? "└── " : "┌── ") + nodeValue);
+
+        if (left != null) {
+            left.printTree(prefix + (isTail ? "    " : "│   "), true);
+        }
+
+    }
 
 }
